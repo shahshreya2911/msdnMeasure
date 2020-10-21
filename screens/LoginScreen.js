@@ -4,12 +4,13 @@ import { AsyncStorage, StyleSheet, Text,  View, TextInput, Button,  TouchableHig
 export default class LoginScreen extends Component {
 constructor(props) {
    super(props);
-    state = {
+    this.state = {
       email   : '',
       password: '',
+     
     }
   }
-
+  
   FunctionToLogin = ({navigation}) => {
     console.log(this.state);
    fetch('https://measurementbackend.herokuapp.com/users/login', {
@@ -46,7 +47,6 @@ constructor(props) {
 
 render() {
     return (
-      
      
       <View style={styles.container}>
        <Logo />
@@ -72,7 +72,7 @@ render() {
 
         
       </View>
-     
+   
     );
   }
 

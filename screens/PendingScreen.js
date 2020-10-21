@@ -4,6 +4,8 @@ import {Platform, StyleSheet, Text, View, FlatList,AsyncStorage , TouchableHighl
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPendingOrdersListing } from '../redux/services/FetchData';
+import HeaderComponent from './HeaderComponent';
+
 class CompletedScreen extends Component {
   
    constructor(props) {
@@ -41,7 +43,8 @@ class CompletedScreen extends Component {
           //  console.log(this.props.porders);
 
         return( 
-   
+      <>
+       <HeaderComponent navigation={this.props.navigation} /> 
       <View style={styles.container}>
 
         <FlatList
@@ -64,6 +67,7 @@ class CompletedScreen extends Component {
         />
       
      </View>
+     </>
      )}
    }
 }

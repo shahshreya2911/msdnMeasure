@@ -1,2 +1,5 @@
 [1002/165634.372:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
 [1002/165634.887:ERROR:exception_snapshot_win.cc(99)] thread ID 8356 not found in process
+[1009/171754.345:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1010/151319.966:ERROR:settings.cc(320)] Settings magic is not 1129342067
+[1010/152319.985:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

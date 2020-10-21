@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchSingleOrderListing } from '../redux/services/FetchData';
 import RadioGroup from 'react-native-radio-buttons-group';
+import HeaderComponent from './HeaderComponent';
 
 class SingleOrderScreen extends Component {
   state = {
@@ -153,7 +154,8 @@ class SingleOrderScreen extends Component {
      console.log(this.props.order);
        console.log(this.state);
       return(
-
+  <>
+       <HeaderComponent navigation={this.props.navigation} />
          <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
          <View style={styles.shadow}>
@@ -180,7 +182,7 @@ class SingleOrderScreen extends Component {
           </View>
       </ScrollView>
         </View>
-
+</>
       )
     }
     }

@@ -4,26 +4,29 @@ import {Platform, StyleSheet, Text, View, FlatList,AsyncStorage , TouchableHighl
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchOrdersListing } from '../redux/services/FetchData';
-import { NavigationActions } from 'react-navigation';
-const navigateAction = NavigationActions.navigate({
-  routeName: 'EditOrder',
+import HeaderComponent from './HeaderComponent';
+import { Appbar } from 'react-native-paper';
 
-  params: {},
-
-  action: NavigationActions.navigate({ routeName: 'RouterComponent' }),
-});
 class CompletedScreen extends Component {
-  
+ 
    constructor(props) {
       super(props);
-      state = {
+      this.state = {
         userid   : '',
+         token   : '',
       }
     }
     async componentDidMount() {
       //listingOrders();
  
       await AsyncStorage.getItem('userid').then((value) => this.setState({ userid : value }))
+      await AsyncStorage.getItem('token').then((value) => this.setState({ token : value }))
+        if(this.state.token) {
+    
+       
+    }else{
+       this.props.navigation.navigate('Login');
+    }
       const { dispatch } = this.props
       this.props.dataSource(this.state);
     }
@@ -31,15 +34,14 @@ class CompletedScreen extends Component {
     {
       console.log(orderId);
      // alert(orderId);
-  this.props.navigation.dispatch(navigateAction);
-     // this.props.navigation.navigate('RouterComponent', { screen: 'EditOrder' });
-    /*    this.props.navigation.navigate('EditOrder');*/
+   this.props.navigation.navigate('EditOrder');
     /*  this.props.navigation.navigate('EditOrder', { 
    screen: 'EditOrder',
    params: {'orderId' : orderId}
  });*/
     }
     render(){  
+      console.log(this.props.navigation);
      if(!this.props.orders)
       return(
         <View style={{padding:10}}>
@@ -51,7 +53,9 @@ class CompletedScreen extends Component {
          //   console.log(this.props);
 
         return( 
-   
+          <>
+                <HeaderComponent navigation={this.props.navigation} /> 
+
       <View style={styles.container}>
 
      <FlatList
@@ -74,6 +78,8 @@ class CompletedScreen extends Component {
         />
       
      </View>
+  
+     </>
      )}
    }
 }
